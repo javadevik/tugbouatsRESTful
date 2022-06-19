@@ -53,7 +53,8 @@ public class JourneyServiceImpl implements JourneyService, JourneyStrippedServic
         return journeyRepository
                 .findAll()
                 .stream()
-                .filter(j -> j.getEndDate().compareTo(currentTimestamp) < 0)
+                .filter(j -> j.getStartDate().compareTo(currentTimestamp) < 0 &&
+                        j.getEndDate().compareTo(currentTimestamp) > 0)
                 .collect(Collectors.toList());
     }
 
